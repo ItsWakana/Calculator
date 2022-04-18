@@ -15,3 +15,7 @@ function divide(...nums) {
     return nums.reduce((total, num) => total / num);
 }
 
+function operate(operator,...nums) {
+    return operator(...nums);
+}
+
