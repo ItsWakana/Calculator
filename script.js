@@ -4,7 +4,7 @@ function multiply(...nums) {
 }
 
 function add(...nums) {
-    return nums.reduce((total, num) => total += num);
+    console.log(nums.reduce((total, num) => total += num));
 }
 
 function subtract(...nums) {
@@ -19,3 +19,38 @@ function operate(operator,...nums) {
     return operator(...nums);
 }
 
+const numbers = document.querySelectorAll('.numbers');
+const operation = document.querySelectorAll('.operate');
+const screen = document.getElementById('screen');
+const equals = document.querySelector('.equals');
+
+const plus = document.querySelector('.plus');
+
+let currentNumber;
+let arrayNums = [];
+let numberOps = [];
+
+Array.from(numbers).forEach((number) => {
+    number.addEventListener('click', (e) => {
+        currentNumber = parseInt(e.target.id);
+        screen.textContent = `${currentNumber}`;
+        console.log(currentNumber);
+    });
+});
+
+plus.addEventListener('click', (e) => {
+    arrayNums.push(currentNumber);
+    console.log(arrayNums);
+    
+});
+
+equals.addEventListener('click', () => {
+    arrayNums.push(currentNumber);
+    console.log(arrayNums);
+    operate(add,...arrayNums);
+    arrayNums = [];
+});
+
+
+
+//operate(add,...arrayNums);
