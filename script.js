@@ -1,19 +1,27 @@
 
 function multiply(...nums) {
-    return nums.reduce((total, num) => total * num);
+    let sum = nums.reduce((total, num) => total * num);
+    screen.textContent = sum;
+    return sum;
 }
 
 function add(...nums) {
-    console.log(nums.reduce((total, num) => total += num));
+    let sum = nums.reduce((total, num) => total += num);
+    screen.textContent = sum;
+    return sum;
 }
 
 function subtract(...nums) {
-    return nums.reduce((total, num) => total -= num);
+    let sum = nums.reduce((total, num) => total -= num);
+    screen.textContent = sum;
+    return sum;
 }
 
 function divide(...nums) {
-    return nums.reduce((total, num) => total / num);
-}
+    let sum = nums.reduce((total, num) => total / num);
+    screen.textContent = sum;
+    return sum;
+}   
 
 function operate(operator,...nums) {
     return operator(...nums);
@@ -23,34 +31,55 @@ const numbers = document.querySelectorAll('.numbers');
 const operation = document.querySelectorAll('.operate');
 const screen = document.getElementById('screen');
 const equals = document.querySelector('.equals');
-
-const plus = document.querySelector('.plus');
-
+const clear = document.querySelector('.clear');
 let currentNumber;
 let arrayNums = [];
 let numberOps = [];
 
+
+function resetCalc() {
+    arrayNums = [];
+    numberOps = [];
+    currentNumber = '';
+    screen.textContent = '';
+}
 Array.from(numbers).forEach((number) => {
     number.addEventListener('click', (e) => {
         currentNumber = parseInt(e.target.id);
         screen.textContent = `${currentNumber}`;
-        console.log(currentNumber);
     });
 });
 
-plus.addEventListener('click', (e) => {
-    arrayNums.push(currentNumber);
-    console.log(arrayNums);
-    
+Array.from(operation).forEach((elem) => {
+    elem.addEventListener('click', (e) => {
+        if (e.target.id == "+" || "-" || "/" || "*") {
+            screen.textContent = e.target.id;
+            numberOps.push(e.target.id);
+            numberOps.length = 1;
+        }
+        arrayNums.push(currentNumber);
+});
 });
 
 equals.addEventListener('click', () => {
     arrayNums.push(currentNumber);
-    console.log(arrayNums);
-    operate(add,...arrayNums);
+    if (numberOps.includes('+')) {
+        operate(add,...arrayNums);
+        numberOps = [];
+    } 
+    if (numberOps.includes('-')) {
+        operate(subtract,...arrayNums);
+        numberOps = [];
+    }
+    if (numberOps.includes('/')) {
+        operate(divide,...arrayNums);
+        numberOps = [];
+    }
+    if (numberOps.includes('*')) {
+        operate(multiply,...arrayNums);
+        numberOps = [];
+    }
     arrayNums = [];
 });
 
-
-
-//operate(add,...arrayNums);
+clear.addEventListener('click', resetCalc);
