@@ -55,6 +55,7 @@ function parseNumber(e) {
 
 function parseOperation(e) {
     arrayNums.push(numSelection);
+
     if (e.target.id == "+" || "-" || "/" || "*") {
         screen.textContent = e.target.id;
         numberOps.splice(0,1, e.target.id);
@@ -62,7 +63,6 @@ function parseOperation(e) {
     }
     if (arrayNums.length == 2) {
         sum = calculation();
-        console.log(sum);
         arrayNums = [];
         arrayNums.push(sum);
     }
@@ -78,21 +78,18 @@ function calculation() {
 
     if (numberOps.includes('+')) {
         return operate(add,...arrayNums);
-        //numberOps = [];
     } 
     if (numberOps.includes('-')) {
         return operate(subtract,...arrayNums);
-        //numberOps = [];
     }
     if (numberOps.includes('/')) {
         return operate(divide,...arrayNums);
-        //numberOps = [];
     }
     if (numberOps.includes('*')) {
         return operate(multiply,...arrayNums);
-        //numberOps = [];
     }
     arrayNums = [];
+    numberOps = [];
 
 }
 
