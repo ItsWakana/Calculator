@@ -3,7 +3,7 @@
 .main-container {
     display: flex;
     justify-content: center;
-    background-color:aqua;
+    background-color:rgb(202, 209, 209);
 }
 
 .button-container {

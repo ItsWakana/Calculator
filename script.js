@@ -9,6 +9,7 @@ let currentNumber = '';
 let arrayNums = [];
 let numberOps = [];
 let numSelection = '';
+let sum;
 
 function multiply(...nums) {
     let sum = nums.reduce((total, num) => total * num);
@@ -53,59 +54,43 @@ function parseNumber(e) {
 }
 
 function parseOperation(e) {
+    arrayNums.push(numSelection);
     if (e.target.id == "+" || "-" || "/" || "*") {
         screen.textContent = e.target.id;
-        numberOps.push(e.target.id);
+        numberOps.splice(0,1, e.target.id);
         numberOps.length = 1;
     }
-    
-        arrayNums.push(numSelection);
-    
-    if (arrayNums.length >= 2) {
-        operatorCalculation();
+    if (arrayNums.length == 2) {
+        sum = calculation();
+        console.log(sum);
+        arrayNums = [];
+        arrayNums.push(sum);
     }
+    
     currentNumber = '';
 }
 
-function operatorCalculation() {
-    if (arrayNums.length < 2) {
+function calculation() {
+  
+    if (arrayNums.length == 1) {
         arrayNums.push(numSelection);
     }
-    if (numberOps.includes('+')) {
-        operate(add,...arrayNums);
-    } 
-    if (numberOps.includes('-')) {
-        operate(subtract,...arrayNums);
-    }
-    if (numberOps.includes('/')) {
-        operate(divide,...arrayNums);
-    }
-    if (numberOps.includes('*')) {
-        operate(multiply,...arrayNums);
-    }
-    if (arrayNums.length < 2) {
-    arrayNums = [];
-    }
-}
-
-function calculation() {
-    arrayNums.push(numSelection);
 
     if (numberOps.includes('+')) {
-        operate(add,...arrayNums);
-        numberOps = [];
+        return operate(add,...arrayNums);
+        //numberOps = [];
     } 
     if (numberOps.includes('-')) {
-        operate(subtract,...arrayNums);
-        numberOps = [];
+        return operate(subtract,...arrayNums);
+        //numberOps = [];
     }
     if (numberOps.includes('/')) {
-        operate(divide,...arrayNums);
-        numberOps = [];
+        return operate(divide,...arrayNums);
+        //numberOps = [];
     }
     if (numberOps.includes('*')) {
-        operate(multiply,...arrayNums);
-        numberOps = [];
+        return operate(multiply,...arrayNums);
+        //numberOps = [];
     }
     arrayNums = [];
 
