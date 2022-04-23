@@ -55,16 +55,16 @@ function parseNumber(e) {
 
 function parseOperation(e) {
     arrayNums.push(numSelection);
-
-    if (e.target.id == "+" || "-" || "/" || "*") {
-        screen.textContent = e.target.id;
-        numberOps.splice(0,1, e.target.id);
-        numberOps.length = 1;
-    }
+    screen.textContent = e.target.id;
     if (arrayNums.length == 2) {
         sum = calculation();
         arrayNums = [];
         arrayNums.push(sum);
+    }
+
+    if (e.target.id == "+" || "-" || "/" || "*") {
+        numberOps.splice(0,1, e.target.id);
+        numberOps.length = 1;
     }
     
     currentNumber = '';
@@ -88,8 +88,8 @@ function calculation() {
     if (numberOps.includes('*')) {
         return operate(multiply,...arrayNums);
     }
-    arrayNums = [];
-    numberOps = [];
+    // arrayNums = [];
+    // numberOps = [];
 
 }
 
