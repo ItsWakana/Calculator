@@ -10,6 +10,7 @@ let arrayNums = [];
 let numberOps = [];
 let numSelection = '';
 let sum;
+let finalSum;
 
 function multiply(...nums) {
     let sum = nums.reduce((total, num) => total * num);
@@ -66,16 +67,13 @@ function parseOperation(e) {
         numberOps.splice(0,1, e.target.id);
         numberOps.length = 1;
     }
-    
     currentNumber = '';
 }
 
 function calculation() {
-  
     if (arrayNums.length == 1) {
         arrayNums.push(numSelection);
     }
-
     if (numberOps.includes('+')) {
         return operate(add,...arrayNums);
     } 
@@ -88,9 +86,6 @@ function calculation() {
     if (numberOps.includes('*')) {
         return operate(multiply,...arrayNums);
     }
-    // arrayNums = [];
-    // numberOps = [];
-
 }
 
 numbers.forEach((number) => {
