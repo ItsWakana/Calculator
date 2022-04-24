@@ -10,7 +10,6 @@ let arrayNums = [];
 let numberOps = [];
 let numSelection = '';
 let sum;
-let finalSum;
 
 function multiply(...nums) {
     let sum = nums.reduce((total, num) => total * num);
@@ -88,11 +87,11 @@ function calculation() {
     }
 }
 
-numbers.forEach((number) => {
+numbers.forEach(number => {
     number.addEventListener('click', parseNumber);
 });
 
-operations.forEach((operator) => {
+operations.forEach(operator => {
     operator.addEventListener('click', parseOperation);
 });
 
