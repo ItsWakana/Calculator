@@ -5,6 +5,8 @@ const screen = document.getElementById('screen');
 const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
 
+const buttons = document.querySelector('.button-container').childNodes;
+
 let currentNumber = '';
 let arrayNums = [];
 let numberOps = [];
@@ -98,3 +100,13 @@ operations.forEach(operator => {
 equals.addEventListener('click', calculation);
 
 clear.addEventListener('click', resetCalc);
+
+buttons.forEach(button => {
+    button.addEventListener('mouseover', () => {
+        button.classList.add('glow');
+    });
+    button.addEventListener('mouseout', () => {
+        button.classList.remove('glow');
+    });
+});
+
