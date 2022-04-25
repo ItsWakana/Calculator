@@ -12,6 +12,7 @@ let arrayNums = [];
 let numberOps = [];
 let numSelection = '';
 let sum;
+let finalSum;
 
 function multiply(...nums) {
     let sum = nums.reduce((total, num) => total * num);
@@ -71,6 +72,23 @@ function parseOperation(e) {
     currentNumber = '';
 }
 
+function finalOperation(e) {
+    arrayNums.push(numSelection);
+    screen.textContent = e.target.id;
+    if (arrayNums.length == 2) {
+        finalSum = calculation();
+        arrayNums = [];
+    }
+
+    if (e.target.id == "+" || "-" || "/" || "*") {
+        numberOps.splice(0,1, e.target.id);
+        numberOps.length = 1;
+    }
+    currentNumber = '';
+    numSelection = parseInt(finalSum);
+    console.log(numSelection);
+}
+
 function calculation() {
     if (arrayNums.length == 1) {
         arrayNums.push(numSelection);
@@ -97,7 +115,7 @@ operations.forEach(operator => {
     operator.addEventListener('click', parseOperation);
 });
 
-equals.addEventListener('click', calculation);
+equals.addEventListener('click', finalOperation);
 
 clear.addEventListener('click', resetCalc);
 
