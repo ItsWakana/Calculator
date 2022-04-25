@@ -4,7 +4,6 @@ const operations = document.querySelectorAll('.operate');
 const screen = document.getElementById('screen');
 const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
-
 const buttons = document.querySelector('.button-container').childNodes;
 
 let currentNumber = '';
@@ -47,7 +46,7 @@ function resetCalc() {
     numberOps = [];
     currentNumber = '';
     numSelection = '';
-    screen.textContent = '';
+    screen.textContent = 0;
 }
 
 function parseNumber(e) {
@@ -86,7 +85,6 @@ function finalOperation(e) {
     }
     currentNumber = '';
     numSelection = parseInt(finalSum);
-    console.log(numSelection);
 }
 
 function calculation() {
