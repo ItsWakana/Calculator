@@ -41,6 +41,23 @@ body {
     height:50px;
 }
 
+.ops-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nums-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sub-container {
+    display:flex;
+    gap:10px;
+}
+
 .operate,
 .clear,
 .equals {
@@ -60,7 +77,7 @@ body {
 
 .clear,
 .equals {
-    width: 100px;
+    width: 110px;
 }
 
 
