@@ -45,6 +45,14 @@ body {
     box-shadow: 7px 5px 7px -7px;
 }
 
+.operate:hover,
+.numbers:hover,
+.clear:hover,
+.equals:hover {
+    /* box-shadow: 7px 5px 7px -7px; */
+    background-color: #fccbee;
+}
+
 .clear,
 .equals {
     width: 100px;

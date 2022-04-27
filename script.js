@@ -16,25 +16,25 @@ let finalSum;
 function multiply(...nums) {
     let sum = nums.reduce((total, num) => total * num);
     screen.textContent = sum;
-    return sum;
+    return sum.toFixed(2);
 }
 
 function add(...nums) {
     let sum = nums.reduce((total, num) => total += num);
     screen.textContent = sum;
-    return sum;
+    return sum.toFixed(2);
 }
 
 function subtract(...nums) {
     let sum = nums.reduce((total, num) => total -= num);
     screen.textContent = sum;
-    return sum;
+    return sum.toFixed(2);
 }
 
 function divide(...nums) {
     let sum = nums.reduce((total, num) => total / num);
     screen.textContent = sum;
-    return sum;
+    return sum.toFixed(2);
 }   
 
 function operate(operator,...nums) {
@@ -50,9 +50,9 @@ function resetCalc() {
 }
 
 function parseNumber(e) {
-    currentNumber += parseInt(e.target.id);
-    numSelection = parseInt(currentNumber);
-    screen.textContent = currentNumber;
+    currentNumber += e.target.id;
+    numSelection = parseFloat(currentNumber);
+    if (currentNumber.length < 10) screen.textContent = currentNumber;
 }
 
 function parseOperation(e) {
@@ -84,7 +84,7 @@ function finalOperation(e) {
         numberOps.length = 1;
     }
     currentNumber = '';
-    numSelection = parseInt(finalSum);
+    numSelection = parseFloat(finalSum);
 }
 
 function calculation() {
@@ -116,13 +116,3 @@ operations.forEach(operator => {
 equals.addEventListener('click', finalOperation);
 
 clear.addEventListener('click', resetCalc);
-
-buttons.forEach(button => {
-    button.addEventListener('mouseover', () => {
-        button.classList.add('glow');
-    });
-    button.addEventListener('mouseout', () => {
-        button.classList.remove('glow');
-    });
-});
-
