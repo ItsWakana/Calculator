@@ -73,7 +73,6 @@ function parseOperation(e) {
 
 function finalOperation(e) {
     arrayNums.push(numSelection);
-    screen.textContent = e.target.id;
     if (arrayNums.length == 2) {
         finalSum = calculation();
         arrayNums = [];
