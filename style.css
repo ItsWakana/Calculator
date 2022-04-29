@@ -27,7 +27,8 @@ body {
 .numbers,
 .equals,
 .clear,
-.null {
+.null,
+.clear-entry {
     box-sizing: border-box;
     display:flex;
     justify-content: center;
@@ -60,7 +61,8 @@ body {
 
 .operate,
 .clear,
-.equals {
+.equals,
+.clear-entry {
     background-color:#ff97f1;
 }
 
@@ -71,15 +73,10 @@ body {
 .operate:hover,
 .numbers:hover,
 .clear:hover,
-.equals:hover {
+.equals:hover,
+.clear-entry:hover {
     background-color: #fccbee;
 }
-
-
-.equals {
-    width: 158px;
-}
-
 
 #screen {
     display:flex;

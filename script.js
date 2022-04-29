@@ -4,6 +4,7 @@ const operations = document.querySelectorAll('.operate');
 const screen = document.getElementById('screen');
 const equals = document.querySelector('.equals');
 const clear = document.querySelector('.clear');
+const clearNum = document.querySelector('.clear-entry');
 const buttons = document.querySelector('.button-container').childNodes;
 
 let currentNumber = '';
@@ -115,3 +116,14 @@ operations.forEach(operator => {
 equals.addEventListener('click', finalOperation);
 
 clear.addEventListener('click', resetCalc);
+
+window.addEventListener('keydown', clearEntry);
+
+clearNum.addEventListener('click', clearEntry);
+
+function clearEntry(e) {
+    e.key == "Backspace" ? 
+    currentNumber = currentNumber.slice(0, -1) : 
+    currentNumber = currentNumber.slice(0, -1);
+    screen.textContent = currentNumber;
+}
